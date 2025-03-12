@@ -1,0 +1,24 @@
+- why
+  - intent
+- how
+- economics
+- types of tests
+- testing frameworks enzyme vs testing library
+  - false negatives
+  - implementation details
+- component testing
+  - getByRole vs getByTestId
+  - logging
+  -
+  - fireEvent
+  - within
+  - async
+    - findBy
+    - waitFor
+    - waitForElementToBeRemoved
+    - waitForElement
+  - act error
+  - render pattern
+- working with legacy code
+- query mocks
+- mocking
