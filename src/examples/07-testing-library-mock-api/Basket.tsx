@@ -7,8 +7,10 @@ const Basket = () => {
   useEffect(() => {
     async function fetch() {
       try {
-        setBasket([...(await fetchBasket())]);
+        const fetchedBasket = await fetchBasket();
+        setBasket(fetchedBasket);
       } catch (error) {
+        console.log(error);
         setBasket(null);
       }
     }

@@ -16,7 +16,7 @@ const config: Config = {
   // cacheDirectory: "/private/var/folders/zw/3mrzpn590979srr828p80kdw0000gp/T/jest_dy",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
+  clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
   collectCoverage: true,
@@ -176,6 +176,10 @@ const config: Config = {
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
+  transform: {
+    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(js)$": "babel-jest",
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [

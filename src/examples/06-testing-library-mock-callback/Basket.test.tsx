@@ -36,4 +36,10 @@ describe("Basket", () => {
 
     expect(onLoadSpy.mock.calls).toEqual([[1], [2], [3]]);
   });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.resetAllMocks();
+    jest.restoreAllMocks();
+  });
 });

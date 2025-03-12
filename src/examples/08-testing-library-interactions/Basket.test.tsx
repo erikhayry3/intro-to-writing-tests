@@ -3,12 +3,12 @@ import userEvent from "@testing-library/user-event";
 import Basket from "./Basket";
 
 describe("Basket", () => {
-  it("should call onClick callback", () => {
+  it("should call onClick callback", async () => {
     const onClickSpy = jest.fn();
 
     const { getByRole } = render(<Basket onClick={onClickSpy} />);
 
-    userEvent.click(getByRole("button", { name: "Add to basket" }));
+    await userEvent.click(getByRole("button", { name: "Add to basket" }));
 
     expect(onClickSpy).toHaveBeenCalledWith(1);
   });

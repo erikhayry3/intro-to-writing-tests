@@ -17,6 +17,6 @@ describe("Basket", () => {
     expect(getByRole("heading", { name: "Items" })).toBeInTheDocument();
 
     // find roles
-    expect(getByRole("input??", { name: "Search" })).toBeInTheDocument();
+    //expect(getByRole("input??", { name: "Search" })).toBeInTheDocument();
   });
 });

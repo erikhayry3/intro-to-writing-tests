@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import Basket from "./Basket";
 import * as fetchBasket from "./fetchBasket";
 
@@ -37,15 +37,18 @@ describe("Basket", () => {
     it("should fetch items - spyOn wrapper", async () => {
       const fetchSpy = jest
         .spyOn(fetchBasket, "default")
-        .mockResolvedValue(["item1", "item2"]);
+        .mockResolvedValueOnce(["item1", "item2"]);
 
-      const { getByRole, findByRole, getAllByRole } = render(<Basket />);
+      const { getByRole, getAllByRole } = render(<Basket />);
 
       expect(fetchSpy).toHaveBeenCalled();
-      expect(
-        (await findByRole("list", { name: "Items" })).children,
-      ).toHaveLength(2);
-      expect(getByRole("list", { name: "Items" }).children).toHaveLength(2);
+
+      console.log(fetchSpy.mock.calls);
+
+      await waitFor(() => {
+        expect(getByRole("list", { name: "Items" }).children).toHaveLength(2);
+      });
+
       expect(getAllByRole("listitem").at(0)).toHaveTextContent("item1");
       expect(getAllByRole("listitem").at(1)).toHaveTextContent("item2");
     });
@@ -62,6 +65,8 @@ describe("Basket", () => {
 
     afterEach(() => {
       jest.clearAllMocks();
+      jest.resetAllMocks();
+      jest.restoreAllMocks();
       global.fetch = jest.requireActual("node-fetch");
     });
   });
